@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "sourceMap": true,
+    "declaration": true,
+    "rootDir": ".",
+    "outDir": "build",
+    "noImplicitAny": false
+  },
+  "files": [
+    "typings/index.d.ts",
+    "global.d.ts",
+    "src/index.ts",
+    "tests/index.ts"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160723033700",
+    "graphql": "registry:npm/graphql#0.5.0+20160602041655",
+    "sinon": "registry:npm/sinon#1.16.0+20160723033700"
+  },
+  "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20160524142046",
+    "lodash": "registry:dt/lodash#4.14.0+20160817155621",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "node": "registry:env/node#6.0.0+20160813135048"
+  }
+}

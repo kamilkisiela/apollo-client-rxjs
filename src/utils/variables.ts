@@ -65,7 +65,7 @@ function getVariableToObservable(variable: any | Observable<any>) {
     });
   } else {
     return new Observable<any>(subscriber => {
-      subscriber.next(undefined);
+      subscriber.next(null);
     });
   }
 }

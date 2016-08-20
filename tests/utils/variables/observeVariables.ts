@@ -102,4 +102,18 @@ describe('observeVariables', () => {
 
     variables.bar.next('bar 2');
   });
+
+  it('should transform undefined variables to be null', (done) => {
+    const variables = {
+      foo: undefined
+    };
+    const result = {
+      foo: null
+    };
+
+    observeVariables(variables).subscribe((newVariables: any) => {
+      assert.deepEqual(newVariables, result);
+      done();
+    });
+  });
 });

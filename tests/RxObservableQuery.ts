@@ -5,6 +5,7 @@ import { ObservableQuery } from 'apollo-client/ObservableQuery';
 
 import * as heroes from './fixtures/heroes';
 import { RxObservableQuery } from '../src/RxObservableQuery';
+import { ObservableQueryRef } from '../src/utils/ObservableQueryRef';
 
 import ApolloClient from 'apollo-client';
 
@@ -21,6 +22,16 @@ describe('RxObservableQuery', () => {
     client = mocked.client;
     obsQuery = mocked.obsQuery;
     rxObsQuery = mocked.rxObsQuery;
+  });
+
+  it('should handle ObservableQueryRef', (done) => {
+    const mockedClient = {
+      refetch() { done() },
+    };
+    const obsQRef = new ObservableQueryRef(mockedClient as ObservableQuery);
+    const rxObs = new RxObservableQuery(obsQRef);
+
+    rxObs.refetch();
   });
 
   describe('regular', () => {

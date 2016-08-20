@@ -1,7 +1,7 @@
-build/tests
-src
-tests
-typings
+build/tests/
+src/
+tests/
+typings/
 .travis.yml
 global.d.ts
 tsconfig.json

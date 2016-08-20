@@ -14,6 +14,12 @@ describe('rxify', () => {
     client = heroes.mockClient().client;
   });
 
+  it('should throw an error if not a function or ApolloClient', () => {
+    assert.throw(() => {
+      rxify({} as any);
+    }, 'ApolloClient');
+  });
+
   describe('client', () => {
     it('should be able to subscribe', (done) => {
       rxify(client)

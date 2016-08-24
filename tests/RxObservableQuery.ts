@@ -26,7 +26,7 @@ describe('RxObservableQuery', () => {
 
   it('should handle ObservableQueryRef', (done) => {
     const mockedClient = {
-      refetch() { done() },
+      refetch() { done(); },
     };
     const obsQRef = new ObservableQueryRef(mockedClient as ObservableQuery);
     const rxObs = new RxObservableQuery(obsQRef);
@@ -38,7 +38,9 @@ describe('RxObservableQuery', () => {
     it('should be able to subscribe', () => {
       assert.doesNotThrow(() => {
         rxObsQuery.subscribe({
-          next() {}
+          next() {
+            //
+          },
         });
       }, Error);
     });
@@ -57,10 +59,12 @@ describe('RxObservableQuery', () => {
 
     it('should be able to receive an error', (done: MochaDone) => {
       rxObsQuery.subscribe({
-        next() {},
+        next() {
+          //
+        },
         error() {
           done(new Error('should not be called'));
-        }
+        },
       });
 
       rxObsQuery.subscribe({
@@ -69,8 +73,8 @@ describe('RxObservableQuery', () => {
         },
         error() {
           done();
-        }
-      })
+        },
+      });
     });
 
     it('should be able to use a operator', (done: MochaDone) => {
@@ -81,7 +85,7 @@ describe('RxObservableQuery', () => {
         },
         error(error) {
           done(new Error('should not be called'));
-        }
+        },
       });
     });
   });

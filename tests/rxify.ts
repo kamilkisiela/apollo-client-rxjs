@@ -32,7 +32,7 @@ describe('rxify', () => {
           },
           error() {
             done(new Error('should not be called'));
-          }
+          },
         });
     });
   });
@@ -48,7 +48,7 @@ describe('rxify', () => {
           },
           error() {
             done(new Error('should not be called'));
-          }
+          },
         });
     });
 
@@ -57,7 +57,7 @@ describe('rxify', () => {
 
       const obs = rxify(client.watchQuery)({
         query: heroes.queryWithVariables,
-        variables: { hero }
+        variables: { hero },
       });
 
       obs.subscribe({
@@ -67,7 +67,7 @@ describe('rxify', () => {
         },
         error() {
           done(new Error('should not be called'));
-        }
+        },
       });
 
       hero.next(heroes.variables.hero);
@@ -78,7 +78,7 @@ describe('rxify', () => {
 
       const obs = rxify(client.watchQuery)({
         query: heroes.queryWithVariables,
-        variables: { hero }
+        variables: { hero },
       }).map(result => result.data);
 
       obs.subscribe({
@@ -88,7 +88,7 @@ describe('rxify', () => {
         },
         error() {
           done(new Error('should not be called'));
-        }
+        },
       });
 
       hero.next(heroes.variables.hero);

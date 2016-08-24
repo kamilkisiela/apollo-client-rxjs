@@ -24,7 +24,7 @@
     "test-watch": "mocha --reporter spec --full-trace build/tests/index.js --watch",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace build/tests/index.js",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info",
-    "lint": "tslint -e src/*.ts && tslint test/*.ts",
+    "lint": "tslint -e src/*.ts && tslint tests/*.ts",
     "prebuild": "npm run clean:build",
     "build": "tsc",
     "watch": "tsc -w",
@@ -47,6 +47,7 @@
   "devDependencies": {
     "apollo-client": "^0.4.13",
     "chai": "^3.5.0",
+    "es6-promise": "^3.2.1",
     "graphql": "^0.6.2",
     "graphql-tag": "^0.1.11",
     "isomorphic-fetch": "^2.2.1",

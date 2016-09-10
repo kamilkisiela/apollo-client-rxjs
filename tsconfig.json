@@ -8,11 +8,11 @@
     "declaration": true,
     "rootDir": ".",
     "outDir": "build",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "lib": ["es6", "dom"]
   },
   "files": [
-    "typings/index.d.ts",
-    "global.d.ts",
+    "typings.d.ts",
     "src/index.ts",
     "tests/index.ts"
   ]

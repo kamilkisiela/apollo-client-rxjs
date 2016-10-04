@@ -47,6 +47,11 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().fetchMore(options);
   }
 
+  public updateQuery(mapFn: any): void {
+    this.checkMethod('updateQuery');
+    this.getObservableQuery().updateQuery(mapFn);
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {
@@ -68,5 +73,13 @@ export class RxObservableQuery<T> extends Observable<T> {
     }
 
     return <ObservableQuery> this.apollo;
+  }
+
+  private checkMethod(method: string): void {
+    const obsQuery = this.getObservableQuery();
+
+    if (typeof obsQuery[method] === 'undefined') {
+      throw new Error(`Method '${method}' is not available in your version of ApolloClient`);
+    }
   }
 }

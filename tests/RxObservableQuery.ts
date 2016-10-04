@@ -122,5 +122,16 @@ describe('RxObservableQuery', () => {
       assert.deepEqual(stubbed.args[0], [options]);
       assert.equal(promise, 'promise');
     });
+
+    it('should be able to updateQuery', () => {
+      const stubbed = stub(obsQuery, 'updateQuery').returns('void');
+      const mapFn = () => {
+        //
+      };
+      const result = rxObsQuery.updateQuery(mapFn);
+
+      assert.deepEqual(stubbed.args[0], [mapFn]);
+      assert.equal(result, undefined);
+    });
   });
 });

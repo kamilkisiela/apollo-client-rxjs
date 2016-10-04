@@ -1,6 +1,6 @@
 {
   "name": "apollo-client-rxjs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Adds RxJS to ApolloClient",
   "author": "Kamil Kisiela <kamil.kisiela@gmail.com>",
   "license": "MIT",

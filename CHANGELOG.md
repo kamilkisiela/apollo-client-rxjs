@@ -1,6 +1,6 @@
 # Change log
 
-### vNEXT
+### v0.1.0
 
 - Add `updateQuery` to `RxObservableQuery` [PR #2](https://github.com/kamilkisiela/apollo-client-rxjs/pull/2)
 

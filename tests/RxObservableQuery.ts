@@ -100,6 +100,15 @@ describe('RxObservableQuery', () => {
       assert.equal(promise, 'promise');
     });
 
+    it('should be able to subscribeToMore', () => {
+      const stubbed = stub(obsQuery, 'subscribeToMore').returns('fn');
+      const options = {};
+      const fn = rxObsQuery.subscribeToMore(options);
+
+      assert.deepEqual(stubbed.args[0], [options]);
+      assert.equal(fn, 'fn');
+    });
+
     it('should be able to updateQuery', () => {
       const stubbed = stub(obsQuery, 'updateQuery').returns('void');
       const mapFn = () => {

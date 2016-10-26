@@ -41,32 +41,32 @@
     "lodash.assign": "^4.2.0",
     "lodash.isfunction": "^3.0.8",
     "lodash.omit": "^4.5.0",
-    "rxjs": "^5.0.0-beta.6"
+    "rxjs": "^5.0.0-rc.1"
   },
   "peerDependencies": {
-    "apollo-client": "^0.4.13"
+    "apollo-client": "^0.5.0"
   },
   "devDependencies": {
     "@types/chai": "^3.4.32",
+    "@types/es6-shim": "^0.31.32",
     "@types/isomorphic-fetch": "0.0.30",
     "@types/lodash": "^4.14.34",
     "@types/mocha": "^2.2.31",
     "@types/node": "^6.0.38",
     "@types/sinon": "^1.16.29",
-    "apollo-client": "^0.4.13",
+    "apollo-client": "^0.5.0",
     "chai": "^3.5.0",
-    "es6-promise": "^3.2.1",
-    "graphql": "^0.6.2",
-    "graphql-tag": "^0.1.11",
-    "graphql-typings": "0.0.1-beta-2",
+    "graphql": "^0.7.2",
+    "graphql-tag": "^0.1.15",
     "isomorphic-fetch": "^2.2.1",
     "istanbul": "^0.4.4",
-    "mocha": "^3.0.2",
-    "remap-istanbul": "^0.6.4",
+    "mocha": "^3.1.2",
+    "remap-istanbul": "^0.7.0",
     "rimraf": "^2.5.4",
     "sinon": "^1.17.5",
-    "source-map-support": "^0.4.2",
-    "tslint": "^3.14.0",
-    "typescript": "2.0.0"
+    "source-map-support": "^0.4.5",
+    "tslint": "^3.15.1",
+    "typed-graphql": "^1.0.2",
+    "typescript": "^2.0.0"
   }
 }

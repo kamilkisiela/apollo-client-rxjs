@@ -20,7 +20,7 @@ describe('RxApolloClient.watchQuery', () => {
         assert.deepEqual(result.data, heroes.data);
         done();
       },
-      error() {
+      error(error) {
         done(new Error('should not be called'));
       }
     });
@@ -33,7 +33,7 @@ describe('RxApolloClient.watchQuery', () => {
 
     obs.subscribe({
       next(result) {},
-      error() {
+      error(error) {
         done(new Error('should not be called'));
       }
     });

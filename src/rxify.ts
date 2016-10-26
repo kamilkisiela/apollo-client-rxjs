@@ -1,10 +1,8 @@
-import { ApolloQueryResult } from 'apollo-client';
-import { ObservableQuery } from 'apollo-client/ObservableQuery';
+import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { createWithObservableVariables } from './utils/variables';
 import { RxObservableQuery } from './RxObservableQuery';
 
-import ApolloClient from 'apollo-client';
 import isFunction = require('lodash.isfunction');
 
 export type WatchQueryFn = (options?: any) => ObservableQuery;

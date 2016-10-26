@@ -1,9 +1,8 @@
 import { assert } from 'chai';
 import { Subject } from 'rxjs/Subject';
+import { ApolloClient } from 'apollo-client';
 
 import { rxify } from '../src/rxify';
-
-import ApolloClient from 'apollo-client';
 
 import * as heroes from './fixtures/heroes';
 

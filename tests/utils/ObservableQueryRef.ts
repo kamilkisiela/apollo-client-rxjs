@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { ObservableQuery } from 'apollo-client/ObservableQuery';
 
 import { ObservableQueryRef } from '../../src/utils/ObservableQueryRef';
 

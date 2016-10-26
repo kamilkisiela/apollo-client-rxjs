@@ -1,13 +1,10 @@
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
-import { ApolloQueryResult } from 'apollo-client';
-import { ObservableQuery } from 'apollo-client/ObservableQuery';
+import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import * as heroes from './fixtures/heroes';
 import { RxObservableQuery } from '../src/RxObservableQuery';
 import { ObservableQueryRef } from '../src/utils/ObservableQueryRef';
-
-import ApolloClient from 'apollo-client';
 
 import 'rxjs/add/operator/map';
 
@@ -53,26 +50,6 @@ describe('RxObservableQuery', () => {
         },
         error(error) {
           done(error);
-        },
-      });
-    });
-
-    it('should be able to receive an error', (done: MochaDone) => {
-      rxObsQuery.subscribe({
-        next() {
-          //
-        },
-        error() {
-          done(new Error('should not be called'));
-        },
-      });
-
-      rxObsQuery.subscribe({
-        next() {
-          done(new Error('should not be called'));
-        },
-        error() {
-          done();
         },
       });
     });

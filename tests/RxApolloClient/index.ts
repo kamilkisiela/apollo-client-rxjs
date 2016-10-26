@@ -1,8 +1,7 @@
 import { assert } from 'chai';
+import { ApolloClient } from 'apollo-client';
 
 import { RxApolloClient } from '../../src/RxApolloClient';
-
-import ApolloClient from 'apollo-client';
 
 import './watchQuery';
 import './query';

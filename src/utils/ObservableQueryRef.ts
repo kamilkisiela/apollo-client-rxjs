@@ -1,4 +1,4 @@
-import { ObservableQuery } from 'apollo-client/ObservableQuery';
+import { ObservableQuery } from 'apollo-client';
 
 export class ObservableQueryRef {
   private ref: ObservableQuery;

@@ -3,8 +3,7 @@ import { Subscriber } from 'rxjs/Subscriber';
 import { Subscription } from 'rxjs/Subscription';
 import { Operator } from 'rxjs/Operator';
 import { $$observable } from 'rxjs/symbol/observable';
-import { ObservableQuery } from 'apollo-client/ObservableQuery';
-import { ApolloQueryResult } from 'apollo-client';
+import { ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { ObservableQueryRef } from './utils/ObservableQueryRef';
 
@@ -68,11 +67,11 @@ export class RxObservableQuery<T> extends Observable<T> {
 
   private getObservableQuery(): ObservableQuery {
     if (this.apollo instanceof ObservableQueryRef) {
-      const ref = <ObservableQueryRef> this.apollo;
+      const ref = this.apollo as ObservableQueryRef;
       return ref.getRef();
     }
 
-    return <ObservableQuery> this.apollo;
+    return this.apollo as ObservableQuery;
   }
 
   private checkMethod(method: string): void {

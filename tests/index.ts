@@ -1,4 +1,3 @@
-import 'es6-promise';
 import 'isomorphic-fetch';
 
 // tslint:disable-next-line:no-var-requires 

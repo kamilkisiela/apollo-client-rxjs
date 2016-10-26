@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { ObservableQuery } from 'apollo-client/ObservableQuery';
+import { ObservableQuery } from 'apollo-client';
 
 import { ObservableQueryRef } from './ObservableQueryRef';
 import { RxObservableQuery } from '../RxObservableQuery';

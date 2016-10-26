@@ -2,9 +2,11 @@
 
 ### vNEXT
 
+- Added support for `rxjs@5.0.0-beta.12` [PR #6](https://github.com/kamilkisiela/apollo-client-rxjs/pull/6)
+
 ### v0.2.0
 
-- Add `subscribeToMore` function [PR #5](https://github.com/kamilkisiela/apollo-client-rxjs/pull/5)
+- Added `subscribeToMore` function [PR #5](https://github.com/kamilkisiela/apollo-client-rxjs/pull/5)
 - Added support for ApolloClient `v0.5.0` [PR #4](https://github.com/kamilkisiela/apollo-client-rxjs/pull/4)
 - BREAKING CHANGE No longer support ApolloClient `v0.4.X` [PR #4](https://github.com/kamilkisiela/apollo-client-rxjs/pull/4)
 

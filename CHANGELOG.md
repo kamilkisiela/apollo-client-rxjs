@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+### v0.2.3
+
 - Updated to `apollo-client@0.5.1` [PR #11](https://github.com/kamilkisiela/apollo-client-rxjs/pull/11)
 
 ### v0.2.2

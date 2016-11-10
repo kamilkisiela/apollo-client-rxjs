@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+- Updated to `apollo-client@0.5.1` [PR #11](https://github.com/kamilkisiela/apollo-client-rxjs/pull/11)
+
 ### v0.2.2
 
 - `rxjs` as a peerDependency [PR #9](https://github.com/kamilkisiela/apollo-client-rxjs/pull/9)

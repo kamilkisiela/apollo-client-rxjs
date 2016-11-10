@@ -43,18 +43,17 @@
     "lodash.omit": "^4.5.0"
   },
   "peerDependencies": {
-    "apollo-client": "^0.5.0",
+    "apollo-client": "^0.5.1",
     "rxjs": "^5.0.0-beta.12 || ^5.0.0-rc.1"
   },
   "devDependencies": {
     "@types/chai": "^3.4.32",
-    "@types/es6-shim": "^0.31.32",
     "@types/isomorphic-fetch": "0.0.30",
     "@types/lodash": "^4.14.34",
     "@types/mocha": "^2.2.31",
     "@types/node": "^6.0.38",
     "@types/sinon": "^1.16.29",
-    "apollo-client": "^0.5.0",
+    "apollo-client": "^0.5.1",
     "chai": "^3.5.0",
     "graphql": "^0.7.2",
     "graphql-tag": "^0.1.15",

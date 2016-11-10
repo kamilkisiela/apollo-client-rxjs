@@ -14,11 +14,11 @@ notifications:
   email: false
 
 install:
+  - npm prune
   - npm i
   - npm install -g coveralls
 
 script:
-  - npm prune
   - npm test
 
 after_script:

@@ -1,4 +1,7 @@
 import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
+import { observeOn } from 'rxjs/operator/observeOn';
+import { AsyncAction } from 'rxjs/scheduler/AsyncAction';
+import { AsyncScheduler } from 'rxjs/scheduler/AsyncScheduler';
 
 import { createWithObservableVariables } from './utils/variables';
 import { RxObservableQuery } from './RxObservableQuery';
@@ -30,17 +33,21 @@ export function rxify(
   throw new Error('Use ApolloClient or a function that returns ObservableQuery');
 }
 
+function wrapAsync<T>(obs: RxObservableQuery<T>): RxObservableQuery<T> {
+  return observeOn.call(obs, new AsyncScheduler(AsyncAction));
+}
+
 function wrapWatchQuery(
   watchQuery: WatchQueryFn
 ): WatchQueryRxFn {
   return (options) => {
     if (typeof options.variables === 'object') {
-      return createWithObservableVariables(
+      return wrapAsync(createWithObservableVariables(
         options,
         (newOptions) => watchQuery(newOptions)
-      );
+      ));
     }
 
-    return new RxObservableQuery(watchQuery(options));
+    return wrapAsync(new RxObservableQuery(watchQuery(options)));
   };
 }

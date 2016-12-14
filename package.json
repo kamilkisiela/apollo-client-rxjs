@@ -28,7 +28,7 @@
     "test-watch": "mocha --reporter spec --full-trace build/tests/index.js --watch",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace build/tests/index.js",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info",
-    "lint": "tslint -e src/*.ts && tslint tests/*.ts",
+    "lint": "tslint src/**/*.ts && tslint tests/*.ts",
     "prebuild": "npm run clean:build",
     "build": "tsc",
     "watch": "tsc -w",

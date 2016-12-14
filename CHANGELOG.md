@@ -3,6 +3,7 @@
 ### vNEXT
 
 - Use `lodash` instead of individual packages [PR #14](https://github.com/kamilkisiela/apollo-client-rxjs/pull/14)
+- Made every `RxObservableQuery` asynchronous [PR #13](https://github.com/kamilkisiela/apollo-client-rxjs/pull/13)
 
 ### v0.2.3
 

@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+- Use `lodash` instead of individual packages [PR #14](https://github.com/kamilkisiela/apollo-client-rxjs/pull/14)
+
 ### v0.2.3
 
 - Updated to `apollo-client@0.5.1` [PR #11](https://github.com/kamilkisiela/apollo-client-rxjs/pull/11)

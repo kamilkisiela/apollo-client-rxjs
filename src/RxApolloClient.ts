@@ -2,8 +2,6 @@ import { ApolloClient, WatchQueryOptions } from 'apollo-client';
 import { RxObservableQuery } from './RxObservableQuery';
 import { createWithObservableVariables } from './utils/variables';
 
-import 'rxjs/add/operator/switchMap';
-
 export class RxApolloClient extends ApolloClient {
   constructor(options: any) {
     super(options);

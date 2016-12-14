@@ -5,8 +5,8 @@ import { ObservableQuery } from 'apollo-client';
 import { ObservableQueryRef } from './ObservableQueryRef';
 import { RxObservableQuery } from '../RxObservableQuery';
 
-import assign = require('lodash.assign');
-import omit = require('lodash.omit');
+import assign = require('lodash/assign');
+import omit = require('lodash/omit');
 
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';

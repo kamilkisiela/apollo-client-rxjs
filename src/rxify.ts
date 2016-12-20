@@ -2,11 +2,10 @@ import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client'
 import { observeOn } from 'rxjs/operator/observeOn';
 import { AsyncAction } from 'rxjs/scheduler/AsyncAction';
 import { AsyncScheduler } from 'rxjs/scheduler/AsyncScheduler';
+import { isFunction } from 'lodash';
 
 import { createWithObservableVariables } from './utils/variables';
 import { RxObservableQuery } from './RxObservableQuery';
-
-import isFunction = require('lodash/isFunction');
 
 export type WatchQueryFn = (options?: any) => ObservableQuery;
 export type WatchQueryRxFn = (options?: any) => RxObservableQuery<ApolloQueryResult>;

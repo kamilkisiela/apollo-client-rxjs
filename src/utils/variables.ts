@@ -1,25 +1,22 @@
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { switchMap } from 'rxjs/operator/switchMap';
+import { combineLatest } from 'rxjs/observable/combineLatest';
 import { ObservableQuery } from 'apollo-client';
+import { assign, omit } from 'lodash';
 
 import { ObservableQueryRef } from './ObservableQueryRef';
 import { RxObservableQuery } from '../RxObservableQuery';
 
-import assign = require('lodash/assign');
-import omit = require('lodash/omit');
-
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-
 export function createWithObservableVariables(
   options: any,
-  mapFn: (options: any) => ObservableQuery
+  mapFn: (options: any) => ObservableQuery,
 ): RxObservableQuery<any> {
   const observableQueryRef = new ObservableQueryRef();
   const varObs = observeVariables(options.variables);
 
   return new RxObservableQuery(observableQueryRef, subscriber => {
-    const sub = varObs.switchMap(newVariables => {
+    const sub = switchMap.call(varObs, (newVariables => {
       // prepare variables
       const cleanOptions = omit(options, 'variables');
       const newOptions = assign(cleanOptions, { variables: newVariables });
@@ -27,7 +24,7 @@ export function createWithObservableVariables(
       observableQueryRef.setRef(mapFn(newOptions));
 
       return observableQueryRef.getRef();
-    }).subscribe(subscriber);
+    })).subscribe(subscriber);
 
     return () => sub.unsubscribe();
   });
@@ -37,7 +34,7 @@ export function observeVariables(variables?: Object): Observable<Object> {
   const keys = Object.keys(variables);
 
   return Observable.create((observer: Observer<any>) => {
-    Observable.combineLatest(mapVariablesToObservables(variables))
+    combineLatest.call(undefined, mapVariablesToObservables(variables))
       .subscribe((values) => {
         const resultVariables = {};
 
@@ -51,12 +48,12 @@ export function observeVariables(variables?: Object): Observable<Object> {
   });
 };
 
-function mapVariablesToObservables(variables?: Object) {
+function mapVariablesToObservables(variables?: Object): Observable<any>[] {
   return Object.keys(variables)
     .map(key => getVariableToObservable(variables[key]));
 }
 
-function getVariableToObservable(variable: any | Observable<any>) {
+function getVariableToObservable(variable: any | Observable<any>): Observable<any> {
   if (variable instanceof Observable) {
     return variable;
   } else if (typeof variable !== 'undefined') {

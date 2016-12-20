@@ -60,7 +60,7 @@ describe('RxObservableQuery', () => {
           assert.deepEqual(result, heroes.data);
           done();
         },
-        error(error) {
+        error() {
           done(new Error('should not be called'));
         },
       });

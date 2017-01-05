@@ -7,6 +7,7 @@ import { RxObservableQuery } from '../src/RxObservableQuery';
 import { ObservableQueryRef } from '../src/utils/ObservableQueryRef';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 describe('RxObservableQuery', () => {
   let obsQuery: ObservableQuery;
@@ -49,20 +50,59 @@ describe('RxObservableQuery', () => {
           done();
         },
         error(error) {
-          done(error);
+          done(new Error('should not be called'));
         },
       });
     });
 
     it('should be able to use a operator', (done: MochaDone) => {
-      rxObsQuery.map(result => result.data).subscribe({
-        next(result) {
-          assert.deepEqual(result, heroes.data);
+      rxObsQuery
+        .map(result => result.data)
+        .subscribe({
+          next(result) {
+            assert.deepEqual(result, heroes.data);
+            done();
+          },
+          error(error) {
+            done(new Error('should not be called'));
+          },
+        });
+    });
+
+    it('should be able to use the catch operator', (done: MochaDone) => {
+      rxObsQuery
+        .catch<any, ApolloQueryResult>(error => {
+          assert.match(error.networkError, /no more/i, 'not match');
           done();
-        },
-        error(error) {
-          done(new Error('should not be called'));
-        },
+          return rxObsQuery;
+        })
+        .subscribe({
+          next(result) {
+            assert.deepEqual(result.data, heroes.data);
+          },
+        });
+
+      setTimeout(() => {
+        rxObsQuery.refetch();
+      });
+    });
+
+  it('should be able to use the catch operator with another operator', (done: MochaDone) => {
+      rxObsQuery
+        .map<ApolloQueryResult, any>(({data}) => data.allHeroes)
+        .catch<any, ApolloQueryResult>(error => {
+          assert.match(error.networkError, /no more/i, 'not match');
+          done();
+          return rxObsQuery;
+        })
+        .subscribe({
+          next(result) {
+            assert.deepEqual(result, heroes.data.allHeroes);
+          },
+        });
+
+      setTimeout(() => {
+        rxObsQuery.refetch();
       });
     });
   });

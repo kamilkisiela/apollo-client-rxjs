@@ -12,7 +12,6 @@
     "noImplicitAny": false
   },
   "files": [
-    "typings.d.ts",
     "src/index.ts",
     "tests/index.ts"
   ]

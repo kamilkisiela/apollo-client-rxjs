@@ -1,4 +1,4 @@
-import { Document } from 'graphql';
+import { DocumentNode } from 'graphql';
 import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { RxObservableQuery } from '../../src/RxObservableQuery';
@@ -10,7 +10,7 @@ import mockNetworkInterface from '../mocks/mockNetworkInterface';
 
 // data
 
-export const query: Document = gql`
+export const query: DocumentNode = gql`
   query heroes {
     allHeroes {
       heroes {
@@ -25,7 +25,7 @@ export const data = {
   },
 };
 
-export const queryWithVariables: Document = gql`
+export const queryWithVariables: DocumentNode = gql`
   query heroes {
     allHeroes {
       heroes {

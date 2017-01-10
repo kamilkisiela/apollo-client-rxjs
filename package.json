@@ -45,7 +45,7 @@
     "lodash": "^4.17.2"
   },
   "peerDependencies": {
-    "apollo-client": "^0.6.0",
+    "apollo-client": "^0.7.0",
     "rxjs": "^5.0.0-beta.12 || ^5.0.0-rc.1 || ^5.0.0"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@types/mocha": "^2.2.31",
     "@types/node": "^6.0.38",
     "@types/sinon": "^1.16.29",
-    "apollo-client": "^0.6.0",
+    "apollo-client": "^0.7.1",
     "chai": "^3.5.0",
     "graphql": "^0.8.0",
     "graphql-tag": "^0.1.15",
@@ -65,7 +65,7 @@
     "remap-istanbul": "^0.8.2",
     "rimraf": "^2.5.4",
     "rollup": "^0.37.0",
-    "rxjs": "^5.0.0",
+    "rxjs": "^5.0.3",
     "sinon": "^1.17.5",
     "source-map-support": "^0.4.6",
     "tslint": "^4.1.1",

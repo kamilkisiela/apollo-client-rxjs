@@ -2,14 +2,13 @@ import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client'
 import { observeOn } from 'rxjs/operator/observeOn';
 import { AsyncAction } from 'rxjs/scheduler/AsyncAction';
 import { AsyncScheduler } from 'rxjs/scheduler/AsyncScheduler';
+import { isFunction } from 'lodash';
 
 import { createWithObservableVariables } from './utils/variables';
 import { RxObservableQuery } from './RxObservableQuery';
 
-import isFunction = require('lodash/isFunction');
-
-export type WatchQueryFn = (options?: any) => ObservableQuery;
-export type WatchQueryRxFn = (options?: any) => RxObservableQuery<ApolloQueryResult>;
+export type WatchQueryFn = (options?: any) => ObservableQuery<any>;
+export type WatchQueryRxFn = (options?: any) => RxObservableQuery<ApolloQueryResult<any>>;
 
 export function rxify(
   clientOrWatchQuery: ApolloClient | WatchQueryFn
@@ -18,7 +17,7 @@ export function rxify(
   if (clientOrWatchQuery instanceof ApolloClient) {
     const savedWatchQuery = clientOrWatchQuery.watchQuery;
 
-    clientOrWatchQuery.watchQuery = function(options): RxObservableQuery<ApolloQueryResult> {
+    clientOrWatchQuery.watchQuery = function(options): RxObservableQuery<ApolloQueryResult<any>> {
       return wrapWatchQuery((opts) => savedWatchQuery.call(this, opts))(options);
     }.bind(clientOrWatchQuery);
 

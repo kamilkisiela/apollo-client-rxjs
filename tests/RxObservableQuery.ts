@@ -9,8 +9,8 @@ import { ObservableQueryRef } from '../src/utils/ObservableQueryRef';
 import 'rxjs/add/operator/map';
 
 describe('RxObservableQuery', () => {
-  let obsQuery: ObservableQuery;
-  let rxObsQuery: RxObservableQuery<ApolloQueryResult>;
+  let obsQuery: ObservableQuery<any>;
+  let rxObsQuery: RxObservableQuery<ApolloQueryResult<any>>;
   let client: ApolloClient;
 
   beforeEach(() => {
@@ -25,7 +25,7 @@ describe('RxObservableQuery', () => {
     const mockedClient = {
       refetch() { done(); },
     };
-    const obsQRef = new ObservableQueryRef(mockedClient as ObservableQuery);
+    const obsQRef = new ObservableQueryRef(mockedClient as ObservableQuery<any>);
     const rxObs = new RxObservableQuery(obsQRef);
 
     rxObs.refetch();
@@ -60,7 +60,7 @@ describe('RxObservableQuery', () => {
           assert.deepEqual(result, heroes.data);
           done();
         },
-        error(error) {
+        error() {
           done(new Error('should not be called'));
         },
       });

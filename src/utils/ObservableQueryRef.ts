@@ -1,19 +1,19 @@
 import { ObservableQuery } from 'apollo-client';
 
 export class ObservableQueryRef {
-  private ref: ObservableQuery;
+  private ref: ObservableQuery<any>;
 
-  constructor(ref?: ObservableQuery) {
+  constructor(ref?: ObservableQuery<any>) {
     if (ref) {
       this.setRef(ref);
     }
   }
 
-  public setRef(ref: ObservableQuery) {
+  public setRef(ref: ObservableQuery<any>) {
     this.ref = ref;
   }
 
-  public getRef(): ObservableQuery {
+  public getRef(): ObservableQuery<any> {
     return this.ref;
   }
 }

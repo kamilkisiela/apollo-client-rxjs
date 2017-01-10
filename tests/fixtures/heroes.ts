@@ -45,8 +45,8 @@ export const variables = { hero: 'Mr Bar' };
 
 export interface MockedClientResult {
   client: ApolloClient;
-  obsQuery: ObservableQuery;
-  rxObsQuery: RxObservableQuery<ApolloQueryResult>;
+  obsQuery: ObservableQuery<any>;
+  rxObsQuery: RxObservableQuery<ApolloQueryResult<any>>;
 }
 
 export function mockClient(): MockedClientResult {

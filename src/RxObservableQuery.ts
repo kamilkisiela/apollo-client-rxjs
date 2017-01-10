@@ -9,7 +9,7 @@ import { ObservableQueryRef } from './utils/ObservableQueryRef';
 
 export class RxObservableQuery<T> extends Observable<T> {
   constructor(
-    public apollo: ObservableQuery | ObservableQueryRef,
+    public apollo: ObservableQuery<any> | ObservableQueryRef,
     subscribe?: <R>(subscriber: Subscriber<R>) => Subscription | Function | void
   ) {
     super(null);
@@ -30,7 +30,7 @@ export class RxObservableQuery<T> extends Observable<T> {
 
   // apollo-specific methods
 
-  public refetch(variables?: any): Promise<ApolloQueryResult> {
+  public refetch(variables?: any): Promise<ApolloQueryResult<any>> {
     return this.getObservableQuery().refetch(variables);
   }
 
@@ -68,12 +68,12 @@ export class RxObservableQuery<T> extends Observable<T> {
     return obs[$$observable]().subscribe(subscriber);
   }
 
-  private getObservableQuery(): ObservableQuery {
+  private getObservableQuery(): ObservableQuery<any> {
     if (this.apollo instanceof ObservableQueryRef) {
       const ref = this.apollo as ObservableQueryRef;
       return ref.getRef();
     }
 
-    return this.apollo as ObservableQuery;
+    return this.apollo as ObservableQuery<any>;
   }
 }

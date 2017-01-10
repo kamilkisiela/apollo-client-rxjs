@@ -10,7 +10,7 @@ import { RxObservableQuery } from '../RxObservableQuery';
 
 export function createWithObservableVariables(
   options: any,
-  mapFn: (options: any) => ObservableQuery,
+  mapFn: (options: any) => ObservableQuery<any>,
 ): RxObservableQuery<any> {
   const observableQueryRef = new ObservableQueryRef();
   const varObs = observeVariables(options.variables);

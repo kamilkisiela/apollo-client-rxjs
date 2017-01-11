@@ -1,20 +1,6 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "sourceMap": true,
-    "declaration": true,
-    "rootDir": ".",
-    "outDir": "build",
-    "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
-  },
-  "files": [
-    "src/index.ts",
-    "tests/index.ts"
-  ]
+    "module": "commonjs"
+  }
 }

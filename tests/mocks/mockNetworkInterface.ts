@@ -6,7 +6,7 @@ import {
 import {
   BatchedNetworkInterface,
   SubscriptionNetworkInterface,
-} from 'apollo-client/lib/src/transport/networkInterface';
+} from 'apollo-client/transport/networkInterface';
 
 import {
   ExecutionResult,

@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+- Support `v0.8.0` of `apollo-client` [PR #25](https://github.com/kamilkisiela/apollo-client-rxjs/pull/25)
+
 ### v0.4.0
 
 - Use ES6 Modules and UMD bundle to make this package tree-shaking friendly [PR #16](https://github.com/kamilkisiela/apollo-client-rxjs/pull/16)

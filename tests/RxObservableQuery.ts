@@ -7,6 +7,7 @@ import { RxObservableQuery } from '../src/RxObservableQuery';
 import { ObservableQueryRef } from '../src/utils/ObservableQueryRef';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 describe('RxObservableQuery', () => {
   let obsQuery: ObservableQuery<any>;
@@ -58,6 +59,29 @@ describe('RxObservableQuery', () => {
       rxObsQuery.map(result => result.data).subscribe({
         next(result) {
           assert.deepEqual(result, heroes.data);
+          done();
+        },
+        error() {
+          done(new Error('should not be called'));
+        },
+      });
+    });
+
+    it('should be chainable', (done: MochaDone) => {
+      const counter = { calls: 0 };
+
+      function justDoIt() {
+        counter.calls++;
+      }
+
+      rxObsQuery
+      .do(justDoIt)
+      .do(justDoIt)
+      .do(justDoIt)
+      .subscribe({
+        next(result) {
+          assert.deepEqual(result.data, heroes.data);
+          assert.equal(counter.calls, 3);
           done();
         },
         error() {

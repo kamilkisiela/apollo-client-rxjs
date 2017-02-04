@@ -30,7 +30,7 @@ export class RxObservableQuery<T> extends Observable<T> {
 
   // apollo-specific methods
 
-  public refetch(variables?: any): Promise<ApolloQueryResult<any>> {
+  public refetch(variables?: any): Promise<ApolloQueryResult<T>> {
     return this.getObservableQuery().refetch(variables);
   }
 
@@ -42,7 +42,7 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().startPolling(p);
   }
 
-  public fetchMore(options: any): Promise<any> {
+  public fetchMore(options: any): Promise<ApolloQueryResult<T>> {
     return this.getObservableQuery().fetchMore(options);
   }
 
@@ -54,24 +54,25 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().subscribeToMore(options);
   }
 
-  public result(): Promise<ApolloQueryResult<any>> {
+  public result(): Promise<ApolloQueryResult<T>> {
     return this.getObservableQuery().result();
   }
 
-  public currentResult(): ApolloQueryResult<any> {
+  // XXX Change it to ApolloCurrentResult
+  public currentResult(): any {
     return this.getObservableQuery().currentResult();
   }
 
-  public get variables(): any {
+  public get variables(): { [key: string]: any } {
     return this.getObservableQuery().variables;
   }
 
   // XXX set ModifiableWatchQueryOptions as an interface of opts
-  public setOptions(opts: any): Promise<ApolloQueryResult<any>> {
+  public setOptions(opts: any): Promise<ApolloQueryResult<T>> {
     return this.getObservableQuery().setOptions(opts);
   }
 
-  public setVariables(variables: any, tryFetch: boolean = false): Promise<ApolloQueryResult<any>> {
+  public setVariables(variables: any, tryFetch: boolean = false): Promise<ApolloQueryResult<T>> {
     return this.getObservableQuery().setVariables(variables, tryFetch);
   }
 
@@ -89,12 +90,12 @@ export class RxObservableQuery<T> extends Observable<T> {
     return obs[$$observable]().subscribe(subscriber);
   }
 
-  private getObservableQuery(): ObservableQuery<any> {
+  private getObservableQuery(): ObservableQuery<T> {
     if (this.apollo instanceof ObservableQueryRef) {
       const ref = this.apollo as ObservableQueryRef;
       return ref.getRef();
     }
 
-    return this.apollo as ObservableQuery<any>;
+    return this.apollo as ObservableQuery<T>;
   }
 }

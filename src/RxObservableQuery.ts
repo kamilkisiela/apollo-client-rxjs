@@ -54,6 +54,27 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().subscribeToMore(options);
   }
 
+  public result(): Promise<ApolloQueryResult<any>> {
+    return this.getObservableQuery().result();
+  }
+
+  public currentResult(): ApolloQueryResult<any> {
+    return this.getObservableQuery().currentResult();
+  }
+
+  public get variables(): any {
+    return this.getObservableQuery().variables;
+  }
+
+  // XXX set ModifiableWatchQueryOptions as an interface of opts
+  public setOptions(opts: any): Promise<ApolloQueryResult<any>> {
+    return this.getObservableQuery().setOptions(opts);
+  }
+
+  public setVariables(variables: any, tryFetch: boolean = false): Promise<ApolloQueryResult<any>> {
+    return this.getObservableQuery().setVariables(variables, tryFetch);
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {

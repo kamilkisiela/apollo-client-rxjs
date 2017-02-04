@@ -143,5 +143,41 @@ describe('RxObservableQuery', () => {
       assert.deepEqual(stubbed.args[0], [mapFn]);
       assert.equal(result, undefined);
     });
+
+    it('should be able to use result', () => {
+      stub(obsQuery, 'result').returns('promise');
+      const promise = rxObsQuery.result();
+
+      assert.equal(promise, 'promise');
+    });
+
+    it('should be able to use currentResult', () => {
+      stub(obsQuery, 'currentResult').returns('ApolloQueryResult');
+      const result = rxObsQuery.currentResult();
+
+      assert.equal(result, 'ApolloQueryResult');
+    });
+
+    it('should be able to get variables', () => {
+      assert.isTrue(rxObsQuery.variables === obsQuery.variables);
+    });
+
+    it('should be able to setOptions', () => {
+      const stubbed = stub(obsQuery, 'setOptions').returns('promise');
+      const options = {};
+      const promise = rxObsQuery.setOptions(options);
+
+      assert.deepEqual(stubbed.args[0], [options]);
+      assert.equal(promise, 'promise');
+    });
+
+    it('should be able to setVariables', () => {
+      const stubbed = stub(obsQuery, 'setVariables').returns('promise');
+      const variables = {};
+      const promise = rxObsQuery.setVariables(variables);
+
+      assert.deepEqual(stubbed.args[0], [variables, false]);
+      assert.equal(promise, 'promise');
+    });
   });
 });

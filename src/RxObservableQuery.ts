@@ -71,6 +71,10 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().setOptions(opts);
   }
 
+  public setVariables(variables: any, tryFetch: boolean = false): Promise<ApolloQueryResult<any>> {
+    return this.getObservableQuery().setVariables(variables, tryFetch);
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {

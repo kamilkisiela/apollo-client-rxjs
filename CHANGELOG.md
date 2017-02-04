@@ -2,7 +2,7 @@
 
 ### vNEXT
 
-- Add `result()`, `currentResult()`, `variables`, `setOptions` [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)
+- Add `result()`, `currentResult()`, `variables`, `setOptions`, `setVariables` [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)
 
 ### v0.4.1
 

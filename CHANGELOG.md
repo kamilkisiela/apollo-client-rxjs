@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+### v0.5.0
+
 - Add `result()`, `currentResult()`, `variables`, `setOptions`, `setVariables` [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)
 - Add generic types to `RxObservableQuery` [PR #30](https://github.com/kamilkisiela/apollo-client-rxjs/pull/30)
 

@@ -62,6 +62,10 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().currentResult();
   }
 
+  public get variables(): any {
+    return this.getObservableQuery().variables;
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {

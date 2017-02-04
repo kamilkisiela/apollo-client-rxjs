@@ -157,5 +157,9 @@ describe('RxObservableQuery', () => {
 
       assert.equal(result, 'ApolloQueryResult');
     });
+
+    it('should be able to get variables', () => {
+      assert.isTrue(rxObsQuery.variables === obsQuery.variables);
+    });
   });
 });

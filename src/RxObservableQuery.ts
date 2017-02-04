@@ -66,6 +66,11 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().variables;
   }
 
+  // XXX set ModifiableWatchQueryOptions as an interface of opts
+  public setOptions(opts: any): Promise<ApolloQueryResult<any>> {
+    return this.getObservableQuery().setOptions(opts);
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {

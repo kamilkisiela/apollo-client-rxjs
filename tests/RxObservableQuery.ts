@@ -161,5 +161,14 @@ describe('RxObservableQuery', () => {
     it('should be able to get variables', () => {
       assert.isTrue(rxObsQuery.variables === obsQuery.variables);
     });
+
+    it('should be able to setOptions', () => {
+      const stubbed = stub(obsQuery, 'setOptions').returns('promise');
+      const options = {};
+      const promise = rxObsQuery.setOptions(options);
+
+      assert.deepEqual(stubbed.args[0], [options]);
+      assert.equal(promise, 'promise');
+    });
   });
 });

@@ -150,5 +150,12 @@ describe('RxObservableQuery', () => {
 
       assert.equal(promise, 'promise');
     });
+
+    it('should be able to use currentResult', () => {
+      stub(obsQuery, 'currentResult').returns('ApolloQueryResult');
+      const result = rxObsQuery.currentResult();
+
+      assert.equal(result, 'ApolloQueryResult');
+    });
   });
 });

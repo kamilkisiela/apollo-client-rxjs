@@ -58,6 +58,10 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().result();
   }
 
+  public currentResult(): ApolloQueryResult<any> {
+    return this.getObservableQuery().currentResult();
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {

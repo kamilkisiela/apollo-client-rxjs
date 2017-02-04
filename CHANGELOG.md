@@ -2,7 +2,7 @@
 
 ### vNEXT
 
-- Add `result` function [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)
+- Add `result()`, `currentResult()` [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)
 
 ### v0.4.1
 

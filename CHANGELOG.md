@@ -6,6 +6,11 @@
 
 - Add `result()`, `currentResult()`, `variables`, `setOptions`, `setVariables` [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)
 - Add generic types to `RxObservableQuery` [PR #30](https://github.com/kamilkisiela/apollo-client-rxjs/pull/30)
+- **BREAKING CHANGE:** `RxObservableQuery` shares now generic type with `ApolloQueryResult` [PR #30](https://github.com/kamilkisiela/apollo-client-rxjs/pull/30)
+
+```ts
+RxObservableQuery<T> extends Observable<ApolloQueryResult<T>>
+```
 
 ### v0.4.1
 

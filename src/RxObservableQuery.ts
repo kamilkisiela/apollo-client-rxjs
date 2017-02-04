@@ -7,10 +7,10 @@ import { ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { ObservableQueryRef } from './utils/ObservableQueryRef';
 
-export class RxObservableQuery<T> extends Observable<T> {
+export class RxObservableQuery<T> extends Observable<ApolloQueryResult<T>> {
   constructor(
     public apollo: ObservableQuery<any> | ObservableQueryRef,
-    subscribe?: <R>(subscriber: Subscriber<R>) => Subscription | Function | void
+    subscribe?: <R>(subscriber: Subscriber<R>) => Subscription | Function | void,
   ) {
     super(null);
 
@@ -19,7 +19,7 @@ export class RxObservableQuery<T> extends Observable<T> {
     }
   }
 
-  public lift<T, R>(operator: Operator<T, R>): Observable<R> {
+  public lift<R>(operator: Operator<ApolloQueryResult<T>, ApolloQueryResult<R>>): Observable<ApolloQueryResult<R>> {
     const observable = new RxObservableQuery<R>(this.apollo);
 
     observable.source = this;

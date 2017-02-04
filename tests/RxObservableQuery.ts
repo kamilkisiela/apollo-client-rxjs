@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
-import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
+import { ApolloClient, ObservableQuery } from 'apollo-client';
 
 import * as heroes from './fixtures/heroes';
 import { RxObservableQuery } from '../src/RxObservableQuery';
@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 describe('RxObservableQuery', () => {
-  let obsQuery: ObservableQuery<any>;
-  let rxObsQuery: RxObservableQuery<ApolloQueryResult<any>>;
+  let obsQuery: ObservableQuery<heroes.AllHeroesQueryResult>;
+  let rxObsQuery: RxObservableQuery<heroes.AllHeroesQueryResult>;
   let client: ApolloClient;
 
   beforeEach(() => {

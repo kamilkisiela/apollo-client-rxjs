@@ -1,5 +1,5 @@
 import { DocumentNode } from 'graphql';
-import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
+import { ApolloClient, ObservableQuery } from 'apollo-client';
 
 import { RxObservableQuery } from '../../src/RxObservableQuery';
 import { RxApolloClient } from '../../src/RxApolloClient';
@@ -9,6 +9,16 @@ import gql from 'graphql-tag';
 import mockNetworkInterface from '../mocks/mockNetworkInterface';
 
 // data
+
+export interface Hero {
+  name: string;
+}
+
+export interface AllHeroesQueryResult {
+  allHeroes: {
+    heroes: Hero[];
+  };
+}
 
 export const query: DocumentNode = gql`
   query heroes {
@@ -46,15 +56,15 @@ export const variables = { hero: 'Mr Bar' };
 export interface MockedClientResult {
   client: ApolloClient;
   obsQuery: ObservableQuery<any>;
-  rxObsQuery: RxObservableQuery<ApolloQueryResult<any>>;
+  rxObsQuery: RxObservableQuery<any>;
 }
 
 export function mockClient(): MockedClientResult {
   const networkInterface = createNetworkInterface();
 
   const client = new ApolloClient({ networkInterface, addTypename: false });
-  const obsQuery = client.watchQuery({ query });
-  const rxObsQuery = new RxObservableQuery(obsQuery);
+  const obsQuery = client.watchQuery<AllHeroesQueryResult>({ query });
+  const rxObsQuery = new RxObservableQuery<AllHeroesQueryResult>(obsQuery);
 
   return {
     client,
@@ -72,7 +82,7 @@ export function mockRxClient(): MockedRxClientResult {
 
   const client = new RxApolloClient({ networkInterface, addTypename: false });
   const obsQuery = client.watchQuery({ query });
-  const rxObsQuery = new RxObservableQuery(obsQuery);
+  const rxObsQuery = new RxObservableQuery<AllHeroesQueryResult>(obsQuery);
 
   return {
     client,

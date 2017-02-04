@@ -11,7 +11,7 @@ export type WatchQueryFn = (options?: any) => ObservableQuery<any>;
 export type WatchQueryRxFn = (options?: any) => RxObservableQuery<ApolloQueryResult<any>>;
 
 export function rxify(
-  clientOrWatchQuery: ApolloClient | WatchQueryFn
+  clientOrWatchQuery: ApolloClient | WatchQueryFn,
 ): any {
   // ApolloClient
   if (clientOrWatchQuery instanceof ApolloClient) {
@@ -37,13 +37,13 @@ function wrapAsync<T>(obs: RxObservableQuery<T>): RxObservableQuery<T> {
 }
 
 function wrapWatchQuery(
-  watchQuery: WatchQueryFn
+  watchQuery: WatchQueryFn,
 ): WatchQueryRxFn {
   return (options) => {
     if (typeof options.variables === 'object') {
       return wrapAsync(createWithObservableVariables(
         options,
-        (newOptions) => watchQuery(newOptions)
+        (newOptions) => watchQuery(newOptions),
       ));
     }
 

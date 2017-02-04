@@ -54,6 +54,10 @@ export class RxObservableQuery<T> extends Observable<T> {
     return this.getObservableQuery().subscribeToMore(options);
   }
 
+  public result(): Promise<ApolloQueryResult<any>> {
+    return this.getObservableQuery().result();
+  }
+
   // where magic happens
 
   public _subscribe(subscriber: Subscriber<T>) {

@@ -143,5 +143,12 @@ describe('RxObservableQuery', () => {
       assert.deepEqual(stubbed.args[0], [mapFn]);
       assert.equal(result, undefined);
     });
+
+    it('should be able to use result', () => {
+      stub(obsQuery, 'result').returns('promise');
+      const promise = rxObsQuery.result();
+
+      assert.equal(promise, 'promise');
+    });
   });
 });

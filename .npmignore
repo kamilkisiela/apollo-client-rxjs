@@ -1,9 +1,9 @@
 build/tests/
 src/
 tests/
-typings/
+docs/
 .travis.yml
-global.d.ts
+CHANGELOG.md
 tsconfig.json
+tsconfig.test.json
 tslint.json
-typings.json

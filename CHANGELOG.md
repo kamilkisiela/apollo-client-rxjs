@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+- Remove `lodash` completely
+
 ### v0.5.0
 
 - Add `result()`, `currentResult()`, `variables`, `setOptions`, `setVariables` [PR #29](https://github.com/kamilkisiela/apollo-client-rxjs/pull/29)

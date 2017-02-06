@@ -3,7 +3,7 @@ import { Observer } from 'rxjs/Observer';
 import { switchMap } from 'rxjs/operator/switchMap';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 import { ObservableQuery } from 'apollo-client';
-import { assign, omit } from 'lodash';
+import { omit } from './helpers';
 
 import { ObservableQueryRef } from './ObservableQueryRef';
 import { RxObservableQuery } from '../RxObservableQuery';
@@ -19,7 +19,7 @@ export function createWithObservableVariables(
     const sub = switchMap.call(varObs, (newVariables => {
       // prepare variables
       const cleanOptions = omit(options, 'variables');
-      const newOptions = assign(cleanOptions, { variables: newVariables });
+      const newOptions = Object.assign(cleanOptions, { variables: newVariables });
 
       observableQueryRef.setRef(mapFn(newOptions));
 

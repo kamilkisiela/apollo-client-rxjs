@@ -4,7 +4,6 @@ export default {
   format: 'umd',
   moduleName: 'apollo.rxjs',
   globals: {
-    'lodash': '_',
     'apollo-client': 'apollo',
     'rxjs/Observable': 'Rx',
     'rxjs/Observer': 'Rx',

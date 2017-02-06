@@ -41,9 +41,6 @@
     "clean:coverage": "rimraf coverage/*",
     "prepublish": "npm run clean && npm run build"
   },
-  "dependencies": {
-    "lodash": "^4.17.2"
-  },
   "peerDependencies": {
     "apollo-client": "^0.7.2 || ^0.8.0",
     "rxjs": "^5.0.0-beta.12 || ^5.0.0-rc.1 || ^5.0.0"
@@ -51,7 +48,6 @@
   "devDependencies": {
     "@types/chai": "^3.4.32",
     "@types/isomorphic-fetch": "0.0.30",
-    "@types/lodash": "^4.14.34",
     "@types/mocha": "^2.2.31",
     "@types/node": "^6.0.38",
     "@types/sinon": "^1.16.29",

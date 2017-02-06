@@ -15,7 +15,7 @@ describe('rxify', () => {
 
   it('should throw an error if not a function or ApolloClient', () => {
     assert.throw(() => {
-      rxify({} as any);
+      rxify(42 as any);
     }, 'ApolloClient');
   });
 

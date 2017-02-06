@@ -2,7 +2,7 @@
 
 ### vNEXT
 
-- Remove `lodash` completely
+- Remove `lodash` completely [PR #34](https://github.com/kamilkisiela/apollo-client-rxjs/pull/34)
 
 ### v0.5.0
 

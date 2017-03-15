@@ -1,12 +1,11 @@
 import { DocumentNode } from 'graphql';
 import { ApolloClient, ObservableQuery } from 'apollo-client';
+import { mockNetworkInterface } from 'apollo-test-utils';
 
 import { RxObservableQuery } from '../../src/RxObservableQuery';
 import { RxApolloClient } from '../../src/RxApolloClient';
 
 import gql from 'graphql-tag';
-
-import mockNetworkInterface from '../mocks/mockNetworkInterface';
 
 // data
 

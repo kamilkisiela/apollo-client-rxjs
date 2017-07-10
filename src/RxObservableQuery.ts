@@ -1,13 +1,12 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscriber } from 'rxjs/Subscriber';
 import { Subscription } from 'rxjs/Subscription';
-import { Operator } from 'rxjs/Operator';
 import { $$observable } from 'rxjs/symbol/observable';
 import { ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { ObservableQueryRef } from './utils/ObservableQueryRef';
 
-export class RxObservableQuery<T> extends Observable<ApolloQueryResult<T>> {
+export class RxObservableQuery<T> extends Observable<T> {
   constructor(
     public apollo: ObservableQuery<any> | ObservableQueryRef,
     subscribe?: <R>(subscriber: Subscriber<R>) => Subscription | Function | void,
@@ -17,15 +16,6 @@ export class RxObservableQuery<T> extends Observable<ApolloQueryResult<T>> {
     if (subscribe) {
       this._subscribe = subscribe;
     }
-  }
-
-  public lift<R>(operator: Operator<ApolloQueryResult<T>, ApolloQueryResult<R>>): Observable<ApolloQueryResult<R>> {
-    const observable = new RxObservableQuery<R>(this.apollo);
-
-    observable.source = this;
-    observable.operator = operator;
-
-    return observable;
   }
 
   // apollo-specific methods

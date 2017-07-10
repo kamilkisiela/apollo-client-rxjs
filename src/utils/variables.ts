@@ -46,7 +46,7 @@ export function observeVariables(variables?: Object): Observable<Object> {
         observer.next(resultVariables);
       });
   });
-};
+}
 
 function mapVariablesToObservables(variables?: Object): Observable<any>[] {
   return Object.keys(variables)

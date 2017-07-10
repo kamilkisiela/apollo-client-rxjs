@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
-import { ApolloClient, ObservableQuery } from 'apollo-client';
+import { ApolloClient, ObservableQuery, ApolloQueryResult } from 'apollo-client';
 
 import * as heroes from './fixtures/heroes';
 import { RxObservableQuery } from '../src/RxObservableQuery';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/do';
 
 describe('RxObservableQuery', () => {
   let obsQuery: ObservableQuery<heroes.AllHeroesQueryResult>;
-  let rxObsQuery: RxObservableQuery<heroes.AllHeroesQueryResult>;
+  let rxObsQuery: RxObservableQuery<ApolloQueryResult<heroes.AllHeroesQueryResult>>;
   let client: ApolloClient;
 
   beforeEach(() => {
@@ -97,7 +97,7 @@ describe('RxObservableQuery', () => {
       const promise = rxObsQuery.refetch(heroes.variables);
 
       assert.deepEqual(stubbed.args[0], [heroes.variables]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise as any, 'promise');
     });
 
     it('should be able to startPolling', () => {
@@ -121,7 +121,7 @@ describe('RxObservableQuery', () => {
       const promise = rxObsQuery.fetchMore(options);
 
       assert.deepEqual(stubbed.args[0], [options]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise as any, 'promise');
     });
 
     it('should be able to subscribeToMore', () => {
@@ -130,7 +130,7 @@ describe('RxObservableQuery', () => {
       const fn = rxObsQuery.subscribeToMore(options);
 
       assert.deepEqual(stubbed.args[0], [options]);
-      assert.equal(fn, 'fn');
+      assert.equal(fn as any, 'fn');
     });
 
     it('should be able to updateQuery', () => {
@@ -148,7 +148,7 @@ describe('RxObservableQuery', () => {
       stub(obsQuery, 'result').returns('promise');
       const promise = rxObsQuery.result();
 
-      assert.equal(promise, 'promise');
+      assert.equal(promise as any, 'promise');
     });
 
     it('should be able to use currentResult', () => {
@@ -168,7 +168,7 @@ describe('RxObservableQuery', () => {
       const promise = rxObsQuery.setOptions(options);
 
       assert.deepEqual(stubbed.args[0], [options]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise as any, 'promise');
     });
 
     it('should be able to setVariables', () => {
@@ -177,7 +177,7 @@ describe('RxObservableQuery', () => {
       const promise = rxObsQuery.setVariables(variables);
 
       assert.deepEqual(stubbed.args[0], [variables, false]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise as any, 'promise');
     });
   });
 });

@@ -6,7 +6,7 @@ import { ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { ObservableQueryRef } from './utils/ObservableQueryRef';
 
-export class RxObservableQuery<T> extends Observable<ApolloQueryResult<T>> {
+export class RxObservableQuery<T> extends Observable<T> {
   constructor(
     public apollo: ObservableQuery<any> | ObservableQueryRef,
     subscribe?: <R>(subscriber: Subscriber<R>) => Subscription | Function | void,

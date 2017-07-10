@@ -5,5 +5,5 @@ import { rxify } from './rxify';
 export {
   RxApolloClient,
   RxObservableQuery,
-  rxify
-}
+  rxify,
+};

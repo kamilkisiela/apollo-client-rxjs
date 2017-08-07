@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { spy, stub } from 'sinon';
-import { ApolloClient, ObservableQuery } from 'apollo-client';
+import { ApolloClient,  ApolloQueryResult, NetworkStatus, ObservableQuery } from 'apollo-client';
 
 import * as heroes from './fixtures/heroes';
 import { RxObservableQuery } from '../src/RxObservableQuery';
@@ -9,10 +9,22 @@ import { ObservableQueryRef } from '../src/utils/ObservableQueryRef';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
+function apolloResultFactory<T>(data: T, override: Partial<ApolloQueryResult<T>> = {}): ApolloQueryResult<T> {
+  return {
+    data,
+    loading: false,
+    networkStatus: NetworkStatus.ready,
+    stale: false,
+    ...override,
+  };
+}
+
 describe('RxObservableQuery', () => {
   let obsQuery: ObservableQuery<heroes.AllHeroesQueryResult>;
   let rxObsQuery: RxObservableQuery<heroes.AllHeroesQueryResult>;
   let client: ApolloClient;
+  let queryResult: ApolloQueryResult<heroes.AllHeroesQueryResult>;
+  let promiseResult: Promise<ApolloQueryResult<heroes.AllHeroesQueryResult>>;
 
   beforeEach(() => {
     const mocked = heroes.mockClient();
@@ -20,6 +32,8 @@ describe('RxObservableQuery', () => {
     client = mocked.client;
     obsQuery = mocked.obsQuery;
     rxObsQuery = mocked.rxObsQuery;
+    queryResult = apolloResultFactory<heroes.AllHeroesQueryResult>(heroes.dataWithVariables);
+    promiseResult = Promise.resolve(queryResult);
   });
 
   it('should handle ObservableQueryRef', (done) => {
@@ -93,11 +107,11 @@ describe('RxObservableQuery', () => {
 
   describe('apollo-specific', () => {
     it('should be able to refech', () => {
-      const stubbed = stub(obsQuery, 'refetch').returns('promise');
+      const stubbed = stub(obsQuery, 'refetch').returns(promiseResult);
       const promise = rxObsQuery.refetch(heroes.variables);
 
       assert.deepEqual(stubbed.args[0], [heroes.variables]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise, promiseResult);
     });
 
     it('should be able to startPolling', () => {
@@ -116,21 +130,22 @@ describe('RxObservableQuery', () => {
     });
 
     it('should be able to fetchMore', () => {
-      const stubbed = stub(obsQuery, 'fetchMore').returns('promise');
+      const stubbed = stub(obsQuery, 'fetchMore').returns(promiseResult);
       const options = {};
       const promise = rxObsQuery.fetchMore(options);
 
       assert.deepEqual(stubbed.args[0], [options]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise, promiseResult);
     });
 
     it('should be able to subscribeToMore', () => {
-      const stubbed = stub(obsQuery, 'subscribeToMore').returns('fn');
+      const mockFetchMore = () => { return; };
+      const stubbed = stub(obsQuery, 'subscribeToMore').returns(mockFetchMore);
       const options = {};
       const fn = rxObsQuery.subscribeToMore(options);
 
       assert.deepEqual(stubbed.args[0], [options]);
-      assert.equal(fn, 'fn');
+      assert.equal(fn, mockFetchMore);
     });
 
     it('should be able to updateQuery', () => {
@@ -145,17 +160,17 @@ describe('RxObservableQuery', () => {
     });
 
     it('should be able to use result', () => {
-      stub(obsQuery, 'result').returns('promise');
+      stub(obsQuery, 'result').returns(promiseResult);
       const promise = rxObsQuery.result();
 
-      assert.equal(promise, 'promise');
+      assert.equal(promise, promiseResult);
     });
 
     it('should be able to use currentResult', () => {
-      stub(obsQuery, 'currentResult').returns('ApolloQueryResult');
-      const result = rxObsQuery.currentResult();
+      stub(obsQuery, 'currentResult').returns(promiseResult);
+      const obsQueryResult = rxObsQuery.currentResult();
 
-      assert.equal(result, 'ApolloQueryResult');
+      assert.equal(obsQueryResult, promiseResult);
     });
 
     it('should be able to get variables', () => {
@@ -163,21 +178,21 @@ describe('RxObservableQuery', () => {
     });
 
     it('should be able to setOptions', () => {
-      const stubbed = stub(obsQuery, 'setOptions').returns('promise');
+      const stubbed = stub(obsQuery, 'setOptions').returns(promiseResult);
       const options = {};
       const promise = rxObsQuery.setOptions(options);
 
       assert.deepEqual(stubbed.args[0], [options]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise, promiseResult);
     });
 
     it('should be able to setVariables', () => {
-      const stubbed = stub(obsQuery, 'setVariables').returns('promise');
+      const stubbed = stub(obsQuery, 'setVariables').returns(promiseResult);
       const variables = {};
       const promise = rxObsQuery.setVariables(variables);
 
       assert.deepEqual(stubbed.args[0], [variables, false]);
-      assert.equal(promise, 'promise');
+      assert.equal(promise, promiseResult);
     });
   });
 });

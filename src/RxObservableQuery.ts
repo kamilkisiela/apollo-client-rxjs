@@ -7,6 +7,12 @@ import { ApolloQueryResult, ObservableQuery } from 'apollo-client';
 
 import { ObservableQueryRef } from './utils/ObservableQueryRef';
 
+declare module 'rxjs/Observable' {
+  interface Observable<T> {
+    lift<R>(operator: Operator<ApolloQueryResult<T>, ApolloQueryResult<R>>): Observable<ApolloQueryResult<R>>;
+  }
+}
+
 export class RxObservableQuery<T> extends Observable<ApolloQueryResult<T>> {
   constructor(
     public apollo: ObservableQuery<any> | ObservableQueryRef,

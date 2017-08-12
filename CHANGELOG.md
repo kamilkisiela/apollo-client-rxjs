@@ -7,6 +7,7 @@
 
 - Fix the lift method (an issue since TypeScript 2.4) [PR #47](https://github.com/kamilkisiela/apollo-client-rxjs/pull/47)
 - Update dependencies to latest [PR #47](https://github.com/kamilkisiela/apollo-client-rxjs/pull/47)
+- Add a deploy script to keep compiled filed in the root directory [PR #48](https://github.com/kamilkisiela/apollo-client-rxjs/pull/48)
 
 ### v0.5.2
 

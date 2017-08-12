@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { ApolloClient } from 'apollo-client';
 
 import { rxify } from '../src/rxify';
+import { RxObservableQuery } from '../src/RxObservableQuery';
 
 import * as heroes from './fixtures/heroes';
 
@@ -37,8 +38,12 @@ describe('rxify', () => {
   });
 
   describe('watchQuery', () => {
+    const watchQuery = <T>(options: Object): RxObservableQuery<T> => {
+      return new RxObservableQuery<T>(rxify(client.watchQuery)(options));
+    };
+
     it('should be able to subscribe', (done) => {
-      rxify(client.watchQuery)({ query: heroes.query })
+      watchQuery({ query: heroes.query })
         .map(result => result.data)
         .subscribe({
           next(data) {
@@ -54,7 +59,7 @@ describe('rxify', () => {
     it('should be able to use observable variables', (done) => {
       const hero = new Subject<string>();
 
-      const obs = rxify(client.watchQuery)({
+      const obs = watchQuery({
         query: heroes.queryWithVariables,
         variables: { hero },
       });
@@ -75,7 +80,7 @@ describe('rxify', () => {
     it('should be able to use operator and observable variables', (done) => {
       const hero = new Subject<string>();
 
-      const obs = rxify(client.watchQuery)({
+      const obs = watchQuery({
         query: heroes.queryWithVariables,
         variables: { hero },
       }).map(result => result.data);

@@ -23,12 +23,3 @@ script:
 after_script:
   - npm run coverage
   - coveralls < ./coverage/lcov.info || true
-
-deploy:
-  provider: npm
-  email: kamil.kisiela@gmail.com
-  api_key:
-    secure: x3/5lQkR2VyN1CXsIxvf2a8intwP00ak984MFu0UIT1y37OI6bmdV3ea5AL5j85NIM0J2qHa4wx1Yu2cXdNmmHnaeI/rScVoKh/QCYsweaAh7Mz9D3kdQZcGdLh0WCRqpQLAUIfZilnmRty9hqpTkoKUQHiJXSAISFA4fOj/a5LC8fuGqhKHp45ezohJTDAKnVFxqSvzKYY+4oX4or4vzeguyE/OJqwFjJn28o+hkh9lK4+QxUkM7qCp8uow0DCzNvNQBFdPH3yANQMGlmrK/P/K1ZxXczn45fS7Y4JsgcpUrTtoRL0DZU13L0AClcYa3HtTEeco1UIqWhtGBHEfCtZMw0mdLCfrHOs538bzlvMW9SgTHFZT1sCrPS/9Ka/n7bY+nUv8edoLVlEzzrKHHjz/TuLvHfuWwcIfWl6+xpKsuqiNWE9rwBbaiz+g3xL+oZ98qPC6UFsr9udnHvzEh4OoKWMDbh0UZkFyYZ7Lmr1yJ8ahKyfSi505O5byPuVG75yN4RqB416gzDq/Q122Rp7HZtq+wR15AwOLsKfLVzTFIYLcN5BtqXRkFBqC1cSiNtLsZZvRrq/Aq3euLw7F8ANib5W5EllkMWlwyTEIxypAZp2KtX9ZThkPBI6Y9YedK6PaosqviICAXQ6cupwGvwcE54bE0D5a4vrb3MvvUHU=
-  on:
-    tags: true
-    repo: kamilkisiela/apollo-client-rxjs

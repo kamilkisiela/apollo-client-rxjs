@@ -2,8 +2,10 @@ build/tests/
 src/
 tests/
 docs/
+scripts/
 .travis.yml
 CHANGELOG.md
+rollup.config.js
 tsconfig.json
 tsconfig.test.json
 tslint.json

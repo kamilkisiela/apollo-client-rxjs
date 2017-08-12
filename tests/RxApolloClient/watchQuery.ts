@@ -12,7 +12,7 @@ describe('RxApolloClient.watchQuery', () => {
 
   it('should get the result', (done) => {
     const obs = client.watchQuery({
-      query: heroes.query
+      query: heroes.query,
     });
 
     obs.subscribe({
@@ -22,13 +22,13 @@ describe('RxApolloClient.watchQuery', () => {
       },
       error() {
         done(new Error('should not be called'));
-      }
+      },
     });
   });
 
   it('should be able to refetch', (done) => {
     const obs = client.watchQuery({
-      query: heroes.query
+      query: heroes.query,
     });
 
     obs.subscribe({
@@ -37,7 +37,7 @@ describe('RxApolloClient.watchQuery', () => {
       },
       error() {
         done(new Error('should not be called'));
-      }
+      },
     });
 
     obs.refetch(heroes.variables).then(({data}) => {

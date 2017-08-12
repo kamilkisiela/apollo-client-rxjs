@@ -1,6 +1,6 @@
 # Change log
 
-### vNEXT
+### v0.6.0-rc.1
 
 ### v0.5.2
 

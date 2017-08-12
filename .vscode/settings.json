@@ -9,7 +9,8 @@
     "**/.DS_Store": true,
     "node_modules": true,
     "build": true,
-    "coverage": true
+    "coverage": true,
+    "npm": true
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }

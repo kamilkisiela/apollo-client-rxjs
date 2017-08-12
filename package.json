@@ -39,7 +39,8 @@
     "clean": "npm run clean:build && npm run clean:coverage",
     "clean:build": "rimraf build/*",
     "clean:coverage": "rimraf coverage/*",
-    "prepublish": "npm run clean && npm run build"
+    "prepare": "npm run clean && npm run build",
+    "deploy": "./scripts/deploy.sh"
   },
   "peerDependencies": {
     "apollo-client": ">=1.0.0-beta <2.0.0",

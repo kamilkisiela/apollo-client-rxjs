@@ -2,6 +2,9 @@
 
 ### vNEXT
 
+- Fix the lift method (an issue since TypeScript 2.4) [PR #47](https://github.com/kamilkisiela/apollo-client-rxjs/pull/47)
+- Update dependencies to latest [PR #47](https://github.com/kamilkisiela/apollo-client-rxjs/pull/47)
+
 ### v0.5.2
 
 - Support `v1.0.0-rc.2` of `apollo-client` [PR #39](https://github.com/kamilkisiela/apollo-client-rxjs/pull/39)

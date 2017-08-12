@@ -6,10 +6,10 @@ import { observeVariables } from '../../../src/utils/variables';
 describe('observeVariables', () => {
   it('should handle primitive values', (done) => {
     const variables = {
-      foo: 'first'
+      foo: 'first',
     };
     const result = {
-      foo: 'first'
+      foo: 'first',
     };
 
     observeVariables(variables).subscribe((newVariables: any) => {
@@ -25,9 +25,9 @@ describe('observeVariables', () => {
     };
 
     const results = [{
-      foo: 'first'
+      foo: 'first',
     }, {
-      foo: 'second'
+      foo: 'second',
     }];
 
     observeVariables(variables).subscribe((newVariables: any) => {
@@ -46,15 +46,15 @@ describe('observeVariables', () => {
     const counter = { calls: 0 };
     const variables = {
       foo: new Subject<string>(),
-      bar: new Subject<string>()
+      bar: new Subject<string>(),
     };
 
     const results = [{
       foo: 'foo 1',
-      bar: 'bar 1'
+      bar: 'bar 1',
     }, {
       foo: 'foo 1',
-      bar: 'bar 2'
+      bar: 'bar 2',
     }];
 
     observeVariables(variables).subscribe((newVariables: any) => {
@@ -86,7 +86,7 @@ describe('observeVariables', () => {
     }, {
       foo: 'foo 1',
       bar: 'bar 2',
-      baz: 'baz 1'
+      baz: 'baz 1',
     }];
 
     observeVariables(variables).subscribe((newVariables: any) => {
@@ -105,10 +105,10 @@ describe('observeVariables', () => {
 
   it('should transform undefined variables to be null', (done) => {
     const variables = {
-      foo: undefined
+      foo: undefined,
     };
     const result = {
-      foo: null
+      foo: null,
     };
 
     observeVariables(variables).subscribe((newVariables: any) => {

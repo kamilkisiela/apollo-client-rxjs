@@ -19,13 +19,13 @@ export class RxObservableQuery<T> extends Observable<ApolloQueryResult<T>> {
     }
   }
 
-  public lift<R>(operator: Operator<ApolloQueryResult<T>, ApolloQueryResult<R>>): Observable<ApolloQueryResult<R>> {
+  public lift<R>(operator: Operator<ApolloQueryResult<T>, R>): Observable<R> {
     const observable = new RxObservableQuery<R>(this.apollo);
 
     observable.source = this;
-    observable.operator = operator;
+    observable.operator = operator as any;
 
-    return observable;
+    return observable as any;
   }
 
   // apollo-specific methods

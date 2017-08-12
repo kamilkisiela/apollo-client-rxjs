@@ -29,7 +29,7 @@
     "test-watch": "mocha --reporter spec --full-trace build/tests/index.js --watch",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace build/tests/index.js",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info",
-    "lint": "tslint src/**/*.ts && tslint tests/*.ts",
+    "lint": "tslint src/**/*.ts && tslint tests/**/*.ts",
     "prebuild": "npm run clean:build",
     "build": "tsc",
     "build-test": "tsc -p tsconfig.test.json",
@@ -42,29 +42,29 @@
     "prepublish": "npm run clean && npm run build"
   },
   "peerDependencies": {
-    "apollo-client": ">=0.7.2 <=0.10.1 || >=1.0.0-beta <2.0.0",
-    "rxjs": "^5.0.0-beta.12 || ^5.0.0-rc.1 || ^5.0.0"
+    "apollo-client": ">=1.0.0-beta <2.0.0",
+    "rxjs": "^5.0.0-beta.12 || >=5.0.0-rc.1 <6.0.0"
   },
   "devDependencies": {
-    "@types/chai": "^3.4.35",
-    "@types/mocha": "^2.2.40",
-    "@types/node": "^6.0.38",
-    "@types/sinon": "^1.16.35",
-    "apollo-client": "^1.0.0-rc.2",
-    "apollo-test-utils": "^0.2.0",
-    "chai": "^3.5.0",
-    "graphql": "^0.9.1",
-    "graphql-tag": "^1.3.1",
+    "@types/chai": "^4.0.2",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.20",
+    "@types/sinon": "^2.3.3",
+    "apollo-client": "^1.9.1",
+    "apollo-test-utils": "^0.3.2",
+    "chai": "^4.1.1",
+    "graphql": "^0.10.5",
+    "graphql-tag": "^2.4.2",
     "isomorphic-fetch": "^2.2.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "remap-istanbul": "^0.9.1",
+    "mocha": "^3.5.0",
+    "remap-istanbul": "^0.9.5",
     "rimraf": "^2.6.1",
-    "rollup": "^0.41.5",
-    "rxjs": "^5.2.0",
-    "sinon": "^2.0.0",
-    "source-map-support": "^0.4.12",
-    "tslint": "^4.5.1",
-    "typescript": "^2.2.1"
+    "rollup": "^0.45.2",
+    "rxjs": "^5.4.2",
+    "sinon": "^3.2.0",
+    "source-map-support": "^0.4.15",
+    "tslint": "^5.6.0",
+    "typescript": "^2.4.2"
   }
 }

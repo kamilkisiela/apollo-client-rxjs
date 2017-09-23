@@ -8,32 +8,36 @@ const globals = {
 
   'rxjs/symbol/observable': 'Rx.Symbol',
 
-  'rxjs/scheduler/AsyncScheduler': 'Rx.Scheduler.async',
+  'rxjs/Scheduler/AsyncAction': 'Rx.Scheduler',
 
-  'rxjs/observable/combineLatest': 'Rx.Observable',
+  'rxjs/Scheduler/AsyncScheduler': 'Rx.Scheduler',
 
-  'rxjs/operator/observeOn': 'Rx.Observable.prototype',
-  'rxjs/operator/switchMap': 'Rx.Observable.prototype'
+  'rxjs/Observable/combineLatest': 'Rx.Observable',
+
+  'rxjs/operators': 'Rx.Observable.prototype',
+};
+
+function onwarn(message) {
+    'use strict';
+    const suppressed = [
+        'UNRESOLVED_IMPORT',
+        'THIS_IS_UNDEFINED'
+    ];
+
+    if (!suppressed.find(code => message.code === code)) {
+        return console.warn(message.message);
+    }
 }
 
 export default {
-  entry: 'build/src/index.js',
-  dest: 'build/bundles/apollo-rxjs.umd.js',
-  format: 'umd',
-  sourceMap: true,
+  input: 'build/src/index.js',
+  output: {
+    file: 'build/bundles/apollo-rxjs.umd.js',
+    format: 'umd',
+  },
+  sourcemap: true,
   exports: 'named',
-  moduleName: 'apollo.rxjs',
+  name: 'apollo.rxjs',
   globals,
   onwarn
-}
-
-function onwarn(message) {
-  const suppressed = [
-    'UNRESOLVED_IMPORT',
-    'THIS_IS_UNDEFINED'
-  ];
-
-  if (!suppressed.find(code => message.code === code)) {
-    return console.warn(message.message);
-  }
-}
+};

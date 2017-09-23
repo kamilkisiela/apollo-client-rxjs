@@ -1,5 +1,8 @@
 # Change log
 
+### v0.6.0-rc.2
+- Fix subscribeToMore throwing error  when watchQuery had variables  [PR #51](https://github.com/kamilkisiela/apollo-client-rxjs/pull/51)
+
 ### v0.6.0-rc.1
 
 - Fix the lift method (an issue since TypeScript 2.4) [PR #47](https://github.com/kamilkisiela/apollo-client-rxjs/pull/47)

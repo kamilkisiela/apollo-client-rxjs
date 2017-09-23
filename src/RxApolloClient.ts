@@ -1,7 +1,7 @@
-import { ApolloClient, WatchQueryOptions } from 'apollo-client';
+import {ApolloClient, WatchQueryOptions} from 'apollo-client';
 
-import { RxObservableQuery } from './RxObservableQuery';
-import { createWithObservableVariables } from './utils/variables';
+import {RxObservableQuery} from './RxObservableQuery';
+import {createWithObservableVariables} from './utils/variables';
 
 export class RxApolloClient extends ApolloClient {
   constructor(options: any) {
@@ -10,7 +10,7 @@ export class RxApolloClient extends ApolloClient {
 
   public watchQuery(options: WatchQueryOptions): any { // RxObservableQuery<ApolloQueryResult> {
     if (typeof options.variables === 'object') {
-      return createWithObservableVariables(options, super.watchQuery);
+      return createWithObservableVariables(options, super.watchQuery.bind(this));
     }
 
     return new RxObservableQuery(super.watchQuery(options));

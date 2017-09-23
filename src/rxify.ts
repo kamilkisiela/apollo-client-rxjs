@@ -1,7 +1,7 @@
 import { ApolloClient, ApolloQueryResult, ObservableQuery } from 'apollo-client';
-import { observeOn } from 'rxjs/operator/observeOn';
-import { AsyncAction } from 'rxjs/scheduler/AsyncAction';
-import { AsyncScheduler } from 'rxjs/scheduler/AsyncScheduler';
+import { observeOn } from 'rxjs/operators';
+import { AsyncAction } from 'rxjs/Scheduler/AsyncAction';
+import { AsyncScheduler } from 'rxjs/Scheduler/AsyncScheduler';
 import { isObject } from './utils/helpers';
 
 import { createWithObservableVariables } from './utils/variables';

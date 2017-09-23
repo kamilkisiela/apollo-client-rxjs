@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { switchMap } from 'rxjs/operator/switchMap';
-import { combineLatest } from 'rxjs/observable/combineLatest';
+import { switchMap } from 'rxjs/operators';
+import { combineLatest } from 'rxjs/Observable/combineLatest';
 import { ObservableQuery } from 'apollo-client';
 import { omit } from './helpers';
 

@@ -11,6 +11,10 @@ Use [RxJS](https://github.com/ReactiveX/rxjs) with the [Apollo Client](https://g
 - [Docs](docs/index.md)
 - [Development](#development)
 
+## Important
+
+I won't update apollo-client-rxjs to support version 2.0 of apollo-client.
+
 ## Install
 
 ```bash
